@@ -1,4 +1,5 @@
 import AboutMe from '@/components/AboutMe'
+import CommandPalette from '@/components/CommandPalette'
 import FrequentlyTechs from '@/components/FrequentlyTechs'
 import LastProjects from '@/components/LastProjects'
 import Nav from '@/components/Nav'
@@ -11,23 +12,23 @@ type Props = {
 
 export default function Home({ data }: Props) {
   const [toggleMenu, setToggleMenu] = useState(false)
-  useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      e.preventDefault()
-      if(e.ctrlKey && e.key === 'p') {
-        setToggleMenu(!toggleMenu)
-      }
-     })
 
-     return () => {
-      document.removeEventListener('keydown', (e) => e, false)
-     }
-  },[])
+  useEffect(() => {
+    const handleMenu = (e: KeyboardEvent) => {
+      e.preventDefault()
+      e.ctrlKey && e.shiftKey && e.key === 'L' && setToggleMenu(prev => !prev)
+    }
+
+    document.addEventListener('keyup', handleMenu)
+
+    return (() => document.removeEventListener('keyup', handleMenu))
+  }, [])
+
   return (
     <>
       <Nav />
       <main className='max-w-[800px] mx-auto mt-4 p-4'>
-        <CommandPalette/>
+        <CommandPalette toggleMenu={toggleMenu} />
         <AboutMe />
         <LastProjects data={data} />
         <FrequentlyTechs />
