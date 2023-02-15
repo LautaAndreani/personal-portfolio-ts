@@ -15,13 +15,13 @@ export const TOOLS = [
     title: "Visual Studio Code",
     description: "Mi editor de codigo favorito",
     image: "/logos/vscode.png",
-    key: "visual-studio-code",
+    key: "visualstudiocode",
   },
   {
     title: "RunJs",
     description: "Playground donde puedo ejecutar codigo de Javascript y Typescript",
     image: "/logos/icon.svg",
-    key: "run-js",
+    key: "runjs",
   },
 ]
 
@@ -34,7 +34,7 @@ export const TECHS = [
   },
   {
     title: "NextJs",
-    description: "El framework para crear interfaces de usuario que utilizo",
+    description: "El framework que uso para crear interfaces de usuario basado en ReactJs",
     image: "/logos/nextjs.png",
     key: "nextjs",
   },
