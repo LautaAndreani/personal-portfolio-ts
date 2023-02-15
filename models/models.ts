@@ -7,3 +7,4 @@ export interface Repositories {
   topics?: string[]
 }
 
+export type Tab = "herramientas" | "tecnologias"
