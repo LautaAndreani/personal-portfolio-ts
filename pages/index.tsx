@@ -16,19 +16,19 @@ export default function Home({ data }: Props) {
   useEffect(() => {
     const handleMenu = (e: KeyboardEvent) => {
       e.preventDefault()
-      e.ctrlKey && e.shiftKey && e.key === 'L' && setToggleMenu(prev => !prev)
+      e.ctrlKey && e.shiftKey && e.key === 'L' && setToggleMenu((prev) => !prev)
     }
 
     document.addEventListener('keyup', handleMenu)
 
-    return (() => document.removeEventListener('keyup', handleMenu))
+    return () => document.removeEventListener('keyup', handleMenu)
   }, [])
 
   return (
     <>
-      <Nav />
+      <Nav setToggleMenu={setToggleMenu} />
       <main className='max-w-[800px] mx-auto mt-4 p-4'>
-        <CommandPalette toggleMenu={toggleMenu} />
+        <CommandPalette toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
         <AboutMe />
         <LastProjects data={data} />
         <FrequentlyTechs />
